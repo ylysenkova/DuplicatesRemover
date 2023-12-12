@@ -44,10 +44,24 @@ class DuplicatesRemoverTest {
 
     @Test
     @DisplayName("Should return the original String")
-    public void remove() {
+    public void removeWithoutDuplicates() {
         //given
         String dirty = "ABN07&";
         String expected = "ABN07&";
+
+        //when
+        String actual = remover.remove(dirty);
+
+        //then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("Should return the original String")
+    public void remove() {
+        //given
+        String dirty = "AABBCCD112233";
+        String expected = "ABCD123";
 
         //when
         String actual = remover.remove(dirty);
